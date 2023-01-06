@@ -1,0 +1,36 @@
+{
+  "testBedApp": {
+    "applicationInstance": {
+      "home": {
+        "title": "Application Instances",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Application Instance",
+        "createOrEditLabel": "Create or edit a Application Instance",
+        "notFound": "No Application Instances found"
+      },
+      "created": "A new Application Instance is created with identifier {{ param }}",
+      "updated": "A Application Instance is updated with identifier {{ param }}",
+      "deleted": "A Application Instance is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Application Instance {{ id }}?"
+      },
+      "detail": {
+        "title": "Application Instance"
+      },
+      "id": "ID",
+      "appInstanceId": "App Instance Id",
+      "status": "Status",
+      "initiatedBy": "Initiated By",
+      "submittedBy": "Submitted By",
+      "reason": "Reason",
+      "createdOn": "Created On",
+      "submittedOn": "Submitted On",
+      "currentNavigationState": "Current Navigation State",
+      "application": "Application",
+      "processStatuss": "Process Statuss",
+      "correspondences": "Correspondences",
+      "documents": "Documents",
+      "profile": "Profile"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "testBedApp": {
+    "ApplicationInstanceEnum": {
+      "null": "",
+      "WIP": "WIP",
+      "SUBMITTED": "SUBMITTED",
+      "WITHDRAWN": "WITHDRAWN"
+    }
+  }
+}

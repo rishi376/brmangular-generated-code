@@ -1,0 +1,65 @@
+{
+  "applications": ["testBed"],
+  "changelogDate": "20221206064512",
+  "databaseType": "sql",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "correspondence",
+  "fields": [
+    {
+      "fieldName": "status",
+      "fieldType": "CorrespondenceStatusEnum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "TRIGGERED,GENERATED,SENT,RECEIVED"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "CorrespondenceTypeEnum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "RECEIVED,FINALIZED_NOTICE"
+    },
+    {
+      "fieldName": "statusDescription",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sentDate",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "documentNumber",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "templateId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "metaDataId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "document",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "Correspondence",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "applicationInstance",
+      "otherEntityRelationshipName": "correspondences",
+      "relationshipName": "application",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

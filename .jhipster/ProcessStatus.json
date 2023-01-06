@@ -1,0 +1,61 @@
+{
+  "applications": ["testBed"],
+  "changelogDate": "20221206064511",
+  "databaseType": "sql",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "process_status",
+  "fields": [
+    {
+      "fieldName": "status",
+      "fieldType": "ProcessStatusEnum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "NEW,WIP,SUBMITTED,HOLD,WAITING,WITHDRAWN,UPDATED,FINALIZED"
+    },
+    {
+      "fieldName": "statusDescription",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "finalState",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "userActionRequired",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "decisionMadeOn",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "expiresOn",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "effectiveStart",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "effectiveEnd",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "ProcessStatus",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "applicationInstance",
+      "otherEntityRelationshipName": "processStatuss",
+      "relationshipName": "application",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

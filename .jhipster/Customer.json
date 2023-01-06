@@ -1,0 +1,66 @@
+{
+  "applications": ["testBed"],
+  "changelogDate": "20221206064514",
+  "databaseType": "sql",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "customer",
+  "fields": [
+    {
+      "fieldName": "firstName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "options": {
+        "fieldContainer": "{'id':1}"
+      }
+    },
+    {
+      "fieldName": "middleName",
+      "fieldType": "String",
+      "options": {
+        "fieldContainer": "{'id':1}"
+      }
+    },
+    {
+      "fieldName": "lastName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "options": {
+        "fieldContainer": "{'id':1}"
+      }
+    },
+    {
+      "fieldName": "dob",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"],
+      "options": {
+        "fieldContainer": "{'id':2}"
+      }
+    },
+    {
+      "fieldName": "gender",
+      "fieldType": "GENDER",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "MALE,FEMALE",
+      "options": {
+        "fieldContainer": "{'id':3}"
+      }
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "Customer",
+  "pagination": "no",
+  "profileSection": "{'name':'customer','index':1,'pageType':'form','sections':['customer','passport','paymentInfo']}",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "profile",
+      "otherEntityRelationshipName": "customer",
+      "ownerSide": true,
+      "relationshipName": "profile",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

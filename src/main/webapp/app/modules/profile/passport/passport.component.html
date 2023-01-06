@@ -1,0 +1,179 @@
+<div class="w-full max-w-3xl">
+  <div class="w-full max-w-3xl">
+    <div class="w-full max-w-3xl" *ngIf="newCustomer | async">Please fill all required field's to proceed</div>
+    <div class="w-full max-w-3xl">
+      <fuse-alert
+        data-cy="customer-alert"
+        class="mt-8 -mb-4"
+        *ngIf="showAlert$ | async"
+        [appearance]="'outline'"
+        [showIcon]="false"
+        [dismissible]="true"
+        [type]="alert.type"
+        [@shake]="alert.type === 'error'"
+      >
+        {{ alert.message }}
+      </fuse-alert>
+    </div>
+  </div>
+
+  <!-- Form -->
+  <form [formGroup]="passportForm">
+    <!-- Section -->
+    <div class="w-full">
+      <div class="text-xl">Passport Section</div>
+      <div class="text-secondary">Please provide the following information</div>
+    </div>
+    <div class="grid sm:grid-cols gap-6 w-full mt-8">
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div class="col-span-4 sm:col-span-2">
+          <mat-form-field appearance="fill" class="fuse-mat-no-subscript w-full">
+            <mat-label>Identity</mat-label>
+            <input
+              matInput
+              type="text"
+              class="fuse-mat-no-subscript w-full"
+              name="identity"
+              id="field_identity"
+              [attr.data-cy]="'identity'"
+              formControlName="identity"
+            />
+          </mat-form-field>
+          <div
+            *ngIf="passportForm.get('identity')!.invalid && (passportForm.get('identity')!.dirty || passportForm.get('identity')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="passportForm.get('identity')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+      </div>
+      <div class="grid sm:grid-cols-4 gap-6">
+        <div class="col-span-4 sm:col-span-2">
+          <!-- TODO - test timed datatype - see ejs file -->
+          <mat-form-field appearance="fill" class="fuse-mat-no-subscript w-full">
+            <mat-label>Expiry</mat-label>
+            <input matInput [matDatepicker]="datepickerLocalDate" formControlName="expiry" [attr.data-cy]="'expiry'" />
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="datepickerLocalDate"></mat-datepicker-toggle>
+            <mat-datepicker #datepickerLocalDate>
+              <mat-datepicker-actions>
+                <button mat-button matDatepickerCancel>Cancel</button>
+                <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+              </mat-datepicker-actions>
+            </mat-datepicker>
+          </mat-form-field>
+          <div *ngIf="passportForm.get('expiry')!.invalid && (passportForm.get('expiry')!.dirty || passportForm.get('expiry')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="passportForm.get('expiry')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+        <div class="col-span-4 sm:col-span-2">
+          <mat-form-field appearance="fill" class="fuse-mat-no-subscript w-full">
+            <mat-label>Issuing Country</mat-label>
+            <input
+              matInput
+              type="text"
+              class="fuse-mat-no-subscript w-full"
+              name="issuingCountry"
+              id="field_issuingCountry"
+              [attr.data-cy]="'issuingCountry'"
+              formControlName="issuingCountry"
+            />
+          </mat-form-field>
+          <div
+            *ngIf="
+              passportForm.get('issuingCountry')!.invalid &&
+              (passportForm.get('issuingCountry')!.dirty || passportForm.get('issuingCountry')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="passportForm.get('issuingCountry')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+      </div>
+      <div class="grid sm:grid-cols-4 gap-6">
+        <div class="col-span-4 sm:col-span-2">
+          <mat-form-field appearance="fill" class="fuse-mat-no-subscript w-full">
+            <mat-label>Document Number</mat-label>
+            <input
+              matInput
+              type="text"
+              class="fuse-mat-no-subscript w-full"
+              name="documentNumber"
+              id="field_documentNumber"
+              [attr.data-cy]="'documentNumber'"
+              formControlName="documentNumber"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-span-4 sm:col-span-2">
+          <mat-form-field class="fuse-mat-no-subscript w-full">
+            <mat-label>Passport Type</mat-label>
+            <mat-select formControlName="passportType" name="passportType" id="field_passportType" [attr.data-cy]="'passportType'">
+              <mat-option *ngFor="let pASSPORTTYPE of pASSPORTTYPEValues" [value]="pASSPORTTYPE"> {{ pASSPORTTYPE }} </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill" class="fuse-mat-no-subscript w-full">
+            <mat-label>Passport Type</mat-label>
+            <input
+              matInput
+              type="text"
+              class="fuse-mat-no-subscript w-full"
+              name="passportType"
+              id="field_passportType"
+              [attr.data-cy]="'passportType'"
+              formControlName="passportType"
+            />
+          </mat-form-field>
+          <div
+            *ngIf="
+              passportForm.get('passportType')!.invalid &&
+              (passportForm.get('passportType')!.dirty || passportForm.get('passportType')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="passportForm.get('passportType')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Divider -->
+    <div class="mt-11 mb-10 border-t"></div>
+
+    <!-- Actions -->
+    <div class="flex items-center justify-end">
+      <button mat-stroked-button type="button">Cancel</button>
+      <button
+        class="ml-4"
+        mat-flat-button
+        type="submit"
+        [disabled]="passportForm.invalid || isSaving"
+        [color]="'primary'"
+        [attr.data-cy]="'save'"
+        (click)="save()"
+      >
+        Save
+      </button>
+    </div>
+  </form>
+</div>

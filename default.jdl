@@ -1,0 +1,189 @@
+application {
+  config {
+    baseName testBed,
+    applicationType gateway,
+    packageName com.brmastr.build,
+    authenticationType jwt,
+    prodDatabaseType postgresql,
+    clientFramework angular
+    devDatabaseType h2Disk
+    testFrameworks [cypress]
+  }
+  entities *
+}
+
+entity Application {
+	name String required
+    group String
+    status ApplicationStatusEnum required
+}
+
+enum ApplicationStatusEnum {
+	ACTIVE, INACTIVE
+}
+
+enum ProfileType {
+	USER, BACK_OFFICE, ADMIN
+}
+
+enum ProfileSource {
+	SELF, MIGRATED, REFRRED
+}
+
+enum ProfileStatus {
+	CURRENT, NEW, RE_CERTIFY, INACTIVE
+}
+
+enum ProfileVerificationStatus {
+	INIT, MANUAL, SUCCESS
+}
+
+entity Profile {
+	profileType ProfileType required
+    profileSource ProfileSource required
+    status ProfileStatus required
+    createdBy String
+    createdDate LocalDate
+    verificationStatus ProfileVerificationStatus required
+}
+
+relationship OneToOne {
+	Profile to User
+}
+
+relationship OneToMany {
+	Profile{applications} to ApplicationInstance{profile}
+    ApplicationInstance{processStatuss} to ProcessStatus{application}
+    ApplicationInstance{correspondences} to Correspondence{application}
+    ApplicationInstance{documents} to Document{application}
+}
+
+entity ApplicationInstance {
+    appInstanceId String required
+	status ApplicationInstanceEnum required
+    initiatedBy String required
+    submittedBy String
+    reason ApplicationReasonEnum required
+    createdOn ZonedDateTime required
+    submittedOn ZonedDateTime
+    currentNavigationState String required
+}
+
+enum ApplicationReasonEnum {
+	FIRST_APPLICATION, USER_UPDATE
+}
+enum ApplicationInstanceEnum {
+	WIP, SUBMITTED, WITHDRAWN
+}
+
+entity ProcessStatus {
+	status ProcessStatusEnum required
+    statusDescription String
+    finalState Boolean required
+    userActionRequired Boolean required
+    decisionMadeOn ZonedDateTime required
+    expiresOn ZonedDateTime
+    effectiveStart ZonedDateTime
+    effectiveEnd ZonedDateTime
+}
+
+enum ProcessStatusEnum {
+	NEW, WIP, SUBMITTED, HOLD, WAITING, WITHDRAWN, UPDATED, FINALIZED
+}
+
+entity Correspondence {
+	status CorrespondenceStatusEnum required
+    type CorrespondenceTypeEnum required
+    statusDescription String
+    sentDate ZonedDateTime required
+    documentNumber Long
+    templateId Long required
+    metaDataId Long required
+    document Blob required
+}
+
+enum CorrespondenceTypeEnum {
+	RECEIVED, FINALIZED_NOTICE
+}
+
+enum CorrespondenceStatusEnum {
+	TRIGGERED, GENERATED, SENT, RECEIVED
+}
+
+entity Document {
+    status DocumentStatusEnum required
+    statusDescription String
+    sentDate ZonedDateTime required
+    type DocumentTypeEnum required
+    documentNumber String
+}
+
+enum DocumentTypeEnum {
+	PASSPORT, EMP_LETTER
+}
+
+enum DocumentStatusEnum {
+	UPLOADED, ACCEPTED
+}
+
+@profileSection("{'name':'customer','index':1,'pageType':'form','sections':['customer','passport','paymentInfo']}")
+entity Customer {
+    @fieldContainer("{'id':1}")
+	firstName String required
+    @fieldContainer("{'id':1}")
+    middleName String
+    @fieldContainer("{'id':1}")
+    lastName String required
+    @fieldContainer("{'id':2}")
+    dob LocalDate required
+    @fieldContainer("{'id':3}")
+    gender GENDER required
+}
+
+enum GENDER {
+	MALE, FEMALE
+}
+
+enum PAYMENTTYPE {
+	CREDIT, DEBIT, DIRECT_PAY
+}
+
+@profileSection("{'name':'paymentInfo','index':2,'pageType':'form','sections':['customer','passport','paymentInfo']}")
+entity PaymentInfo {
+    @fieldContainer("{'id':1}")
+	paymentType PAYMENTTYPE required
+    pNumber Long required
+    expiry LocalDate
+    security Long
+}
+
+enum PASSPORTTYPE {
+	DIPLOMATIC, REGULAR
+}
+
+@profileSection("{'name':'passport','index':3,'pageType':'form','sections':['customer','passport','paymentInfo']}")
+entity Passport {
+    @fieldContainer("{'id':1}")
+	identity String required
+    @fieldContainer("{'id':2}")
+    expiry LocalDate required
+    @fieldContainer("{'id':2}")
+    issuingCountry String required
+    @fieldContainer("{'id':3}")
+    documentNumber String
+    @fieldContainer("{'id':3}")
+    passportType PASSPORTTYPE required
+}
+
+relationship OneToOne {
+	Customer to Profile
+    Passport to Profile
+    ApplicationInstance{application} to Application
+}
+
+relationship ManyToOne {
+    PaymentInfo to Profile
+}
+
+service all with serviceClass
+filter Profile, Customer, PaymentInfo, Passport, Application, ApplicationInstance, ProcessStatus, Correspondence, Document

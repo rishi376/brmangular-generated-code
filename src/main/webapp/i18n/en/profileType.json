@@ -1,0 +1,10 @@
+{
+  "testBedApp": {
+    "ProfileType": {
+      "null": "",
+      "USER": "USER",
+      "BACK_OFFICE": "BACK_OFFICE",
+      "ADMIN": "ADMIN"
+    }
+  }
+}

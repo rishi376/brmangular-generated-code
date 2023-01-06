@@ -1,0 +1,83 @@
+{
+  "applications": ["testBed"],
+  "changelogDate": "20221206064509",
+  "databaseType": "sql",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "profile",
+  "fields": [
+    {
+      "fieldName": "profileType",
+      "fieldType": "ProfileType",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "USER,BACK_OFFICE,ADMIN"
+    },
+    {
+      "fieldName": "profileSource",
+      "fieldType": "ProfileSource",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "SELF,MIGRATED,REFRRED"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "ProfileStatus",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "CURRENT,NEW,RE_CERTIFY,INACTIVE"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "verificationStatus",
+      "fieldType": "ProfileVerificationStatus",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "INIT,MANUAL,SUCCESS"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "Profile",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "profile",
+      "ownerSide": true,
+      "relationshipName": "user",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "applicationInstance",
+      "otherEntityRelationshipName": "profile",
+      "relationshipName": "applications",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "customer",
+      "otherEntityRelationshipName": "profile",
+      "ownerSide": false,
+      "relationshipName": "customer",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "passport",
+      "otherEntityRelationshipName": "profile",
+      "ownerSide": false,
+      "relationshipName": "passport",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "paymentInfo",
+      "otherEntityRelationshipName": "profile",
+      "relationshipName": "paymentInfo",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

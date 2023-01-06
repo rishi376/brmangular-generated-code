@@ -1,0 +1,11 @@
+<mat-form-field class="fuse-mat-no-subscript ml-2" style="width: 200px;">
+    <mat-label>Passport Number</mat-label>
+    <input autocomplete="off" formControlName="passportNumber" matInput>
+</mat-form-field>
+
+<mat-form-field class="fuse-mat-no-subscript ml-2" style="width: 200px;">
+    <mat-label>Expiry date</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="expiryDate">
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>

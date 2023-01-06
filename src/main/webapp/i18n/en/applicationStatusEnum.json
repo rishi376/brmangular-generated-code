@@ -1,0 +1,9 @@
+{
+  "testBedApp": {
+    "ApplicationStatusEnum": {
+      "null": "",
+      "ACTIVE": "ACTIVE",
+      "INACTIVE": "INACTIVE"
+    }
+  }
+}

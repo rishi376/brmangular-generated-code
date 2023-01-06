@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  fuse_frontend_app:
+    image: nginx
+    ports:
+      - 8080:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ../../../target/classes/static:/usr/share/nginx/html

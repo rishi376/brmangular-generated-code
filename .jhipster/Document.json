@@ -1,0 +1,49 @@
+{
+  "applications": ["testBed"],
+  "changelogDate": "20221206064513",
+  "databaseType": "sql",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "document",
+  "fields": [
+    {
+      "fieldName": "status",
+      "fieldType": "DocumentStatusEnum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "UPLOADED,ACCEPTED"
+    },
+    {
+      "fieldName": "statusDescription",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sentDate",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "DocumentTypeEnum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "PASSPORT,EMP_LETTER"
+    },
+    {
+      "fieldName": "documentNumber",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "Document",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "applicationInstance",
+      "otherEntityRelationshipName": "documents",
+      "relationshipName": "application",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

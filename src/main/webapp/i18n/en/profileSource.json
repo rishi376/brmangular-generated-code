@@ -1,0 +1,10 @@
+{
+  "testBedApp": {
+    "ProfileSource": {
+      "null": "",
+      "SELF": "SELF",
+      "MIGRATED": "MIGRATED",
+      "REFRRED": "REFRRED"
+    }
+  }
+}

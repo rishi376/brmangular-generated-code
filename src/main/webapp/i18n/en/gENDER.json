@@ -1,0 +1,9 @@
+{
+  "testBedApp": {
+    "GENDER": {
+      "null": "",
+      "MALE": "MALE",
+      "FEMALE": "FEMALE"
+    }
+  }
+}

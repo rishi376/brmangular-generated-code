@@ -1,0 +1,66 @@
+{
+  "applications": ["testBed"],
+  "changelogDate": "20221206064516",
+  "databaseType": "sql",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "passport",
+  "fields": [
+    {
+      "fieldName": "identity",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "options": {
+        "fieldContainer": "{'id':1}"
+      }
+    },
+    {
+      "fieldName": "expiry",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"],
+      "options": {
+        "fieldContainer": "{'id':2}"
+      }
+    },
+    {
+      "fieldName": "issuingCountry",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"],
+      "options": {
+        "fieldContainer": "{'id':2}"
+      }
+    },
+    {
+      "fieldName": "documentNumber",
+      "fieldType": "String",
+      "options": {
+        "fieldContainer": "{'id':3}"
+      }
+    },
+    {
+      "fieldName": "passportType",
+      "fieldType": "PASSPORTTYPE",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "DIPLOMATIC,REGULAR",
+      "options": {
+        "fieldContainer": "{'id':3}"
+      }
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "Passport",
+  "pagination": "no",
+  "profileSection": "{'name':'passport','index':3,'pageType':'form','sections':['customer','passport','paymentInfo']}",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "profile",
+      "otherEntityRelationshipName": "passport",
+      "ownerSide": true,
+      "relationshipName": "profile",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

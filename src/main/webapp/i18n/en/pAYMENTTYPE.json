@@ -1,0 +1,10 @@
+{
+  "testBedApp": {
+    "PAYMENTTYPE": {
+      "null": "",
+      "CREDIT": "CREDIT",
+      "DEBIT": "DEBIT",
+      "DIRECT_PAY": "DIRECT_PAY"
+    }
+  }
+}

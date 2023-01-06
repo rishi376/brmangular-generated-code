@@ -1,0 +1,22 @@
+<div class="user-agreement-wrapper">
+  <brm-pdf-viewer [src]="pdfSrc" [enableRenderText]="enableRenderText"> </brm-pdf-viewer>
+
+  <div [formGroup]="userAgreementForm" class="user-agreement-form">
+    <mat-checkbox formControlName="agreeCheck" class="agree-checkbox" (change)="updateForm($event.checked)">
+      I agree to the terms and conditions.
+    </mat-checkbox>
+    <div class="signature-wrapper">
+      <mat-form-field [style.width.px]="200">
+        <mat-label>Enter your initials</mat-label>
+        <input formControlName="initials" matInput />
+      </mat-form-field>
+      <mat-form-field [style.width.px]="200" class="date-input">
+        <mat-label>Enter date (mm/dd/yyyy)</mat-label>
+        <input formControlName="date" matInput />
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="action-button-wrapper">
+    <button class="submit-btn" mat-stroked-button [disabled]="userAgreementForm.invalid" (click)="submitForm()">Submit</button>
+  </div>
+</div>

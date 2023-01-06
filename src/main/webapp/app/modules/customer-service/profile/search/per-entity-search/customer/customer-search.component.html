@@ -1,0 +1,36 @@
+<div formGroupName="customer">
+    <mat-form-field class="fuse-mat-no-subscript ml-2" style="width: 200px;">
+        <mat-label>First Name</mat-label>
+        <input id="firstName" autocomplete="off" formControlName="firstName" matInput>
+    </mat-form-field>
+
+    <mat-form-field class="fuse-mat-no-subscript ml-2" style="width: 200px;">
+        <mat-label>Middle Name</mat-label>
+        <input id="middleName" autocomplete="off" formControlName="middleName" matInput>
+    </mat-form-field>
+
+    <mat-form-field class="fuse-mat-no-subscript ml-2" style="width: 200px;">
+        <mat-label>Last Name</mat-label>
+        <input id="LastName" autocomplete="off" formControlName="lastName" matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="fuse-mat-no-subscript ml-2" style="width: 200px;">
+        <mat-label>Dob</mat-label>
+        <input matInput [matDatepicker]="datepickerLocalDate" formControlName="dob" [attr.data-cy]="'dob'" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="datepickerLocalDate"></mat-datepicker-toggle>
+        <mat-datepicker #datepickerLocalDate>
+            <mat-datepicker-actions>
+                <button mat-button matDatepickerCancel>Cancel</button>
+                <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+            </mat-datepicker-actions>
+        </mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="fuse-mat-no-subscript w-200px ml-2" style="width: 200px;">
+        <mat-label>Gender</mat-label>
+        <mat-select id="gender" formControlName="gender">
+            <mat-option *ngFor="let i of gender.values" [value]="i">{{i}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>

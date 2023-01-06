@@ -1,0 +1,21 @@
+<div id="outer-container">
+  <div class="pdf-container">
+    <pdf-viewer
+      [src]="src"
+      [rotation]="rotation"
+      [original-size]="false"
+      [show-all]="true"
+      [fit-to-page]="false"
+      [zoom]="zoom"
+      [zoom-scale]="'page-width'"
+      [render-text]="enableRenderText"
+      [render-text-mode]="2"
+      [external-link-target]="'blank'"
+      [autoresize]="true"
+      [show-borders]="showBorders"
+      [style.width]="width"
+      [style.height]="height"
+    >
+    </pdf-viewer>
+  </div>
+</div>

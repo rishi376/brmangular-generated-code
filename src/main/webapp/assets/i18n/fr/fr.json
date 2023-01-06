@@ -1,0 +1,14 @@
+{
+  "landing": {
+    "title": "Welcome to Landing Pageeee",
+    "adminText": "Only ADMINS can see this text",
+    "userText": "All USERS can see this text",
+    "customerServiceText": "Only Support users can see this text"
+  },
+  "activate": {
+    "title": "Activation",
+    "messages": {
+      "error": "Your user could not be activated"
+    }
+  }
+}

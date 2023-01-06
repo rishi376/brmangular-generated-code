@@ -1,0 +1,32 @@
+{
+  "testBedApp": {
+    "correspondence": {
+      "home": {
+        "title": "Correspondences",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Correspondence",
+        "createOrEditLabel": "Create or edit a Correspondence",
+        "notFound": "No Correspondences found"
+      },
+      "created": "A new Correspondence is created with identifier {{ param }}",
+      "updated": "A Correspondence is updated with identifier {{ param }}",
+      "deleted": "A Correspondence is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Correspondence {{ id }}?"
+      },
+      "detail": {
+        "title": "Correspondence"
+      },
+      "id": "ID",
+      "status": "Status",
+      "type": "Type",
+      "statusDescription": "Status Description",
+      "sentDate": "Sent Date",
+      "documentNumber": "Document Number",
+      "templateId": "Template Id",
+      "metaDataId": "Meta Data Id",
+      "document": "Document",
+      "application": "Application"
+    }
+  }
+}

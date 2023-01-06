@@ -1,0 +1,89 @@
+{
+  "applications": ["testBed"],
+  "changelogDate": "20221206064510",
+  "databaseType": "sql",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "application_instance",
+  "fields": [
+    {
+      "fieldName": "appInstanceId",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "ApplicationInstanceEnum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "WIP,SUBMITTED,WITHDRAWN"
+    },
+    {
+      "fieldName": "initiatedBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "submittedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "reason",
+      "fieldType": "ApplicationReasonEnum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "FIRST_APPLICATION,USER_UPDATE"
+    },
+    {
+      "fieldName": "createdOn",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "submittedOn",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "currentNavigationState",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "ApplicationInstance",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "application",
+      "otherEntityRelationshipName": "applicationInstance",
+      "ownerSide": true,
+      "relationshipName": "application",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "processStatus",
+      "otherEntityRelationshipName": "application",
+      "relationshipName": "processStatuss",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "correspondence",
+      "otherEntityRelationshipName": "application",
+      "relationshipName": "correspondences",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "document",
+      "otherEntityRelationshipName": "application",
+      "relationshipName": "documents",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "profile",
+      "otherEntityRelationshipName": "applications",
+      "relationshipName": "profile",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

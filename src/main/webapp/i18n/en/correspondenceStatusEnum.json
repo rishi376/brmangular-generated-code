@@ -1,0 +1,11 @@
+{
+  "testBedApp": {
+    "CorrespondenceStatusEnum": {
+      "null": "",
+      "TRIGGERED": "TRIGGERED",
+      "GENERATED": "GENERATED",
+      "SENT": "SENT",
+      "RECEIVED": "RECEIVED"
+    }
+  }
+}

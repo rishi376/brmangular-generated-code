@@ -1,0 +1,47 @@
+{
+  "applications": ["testBed"],
+  "changelogDate": "20221206064515",
+  "databaseType": "sql",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "payment_info",
+  "fields": [
+    {
+      "fieldName": "paymentType",
+      "fieldType": "PAYMENTTYPE",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "CREDIT,DEBIT,DIRECT_PAY",
+      "options": {
+        "fieldContainer": "{'id':1}"
+      }
+    },
+    {
+      "fieldName": "pNumber",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "expiry",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "security",
+      "fieldType": "Long"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "PaymentInfo",
+  "pagination": "no",
+  "profileSection": "{'name':'paymentInfo','index':2,'pageType':'form','sections':['customer','passport','paymentInfo']}",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "profile",
+      "otherEntityRelationshipName": "paymentInfo",
+      "relationshipName": "profile",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

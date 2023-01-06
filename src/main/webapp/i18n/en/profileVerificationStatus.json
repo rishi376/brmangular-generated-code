@@ -1,0 +1,10 @@
+{
+  "testBedApp": {
+    "ProfileVerificationStatus": {
+      "null": "",
+      "INIT": "INIT",
+      "MANUAL": "MANUAL",
+      "SUCCESS": "SUCCESS"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+.user-agreement-wrapper {
+  .user-agreement-form {
+    display: flex;
+    justify-content: space-between;
+
+    .agree-checkbox {
+      margin-left: 50px;
+    }
+    .signature-wrapper {
+      display: flex;
+      flex-direction: row;
+
+      .date-input,
+      .initials-input {
+        margin-left: 20px;
+        width: 200px;
+      }
+
+      input:disabled {
+        cursor: not-allowed;
+      }
+    }
+  }
+  .submit-btn {
+    width: max-content;
+    border-radius: 5px !important;
+    margin-left: 50px;
+  }
+}

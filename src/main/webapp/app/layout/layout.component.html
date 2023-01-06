@@ -1,0 +1,47 @@
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- Empty layout -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<empty-layout data-cy="layout-empty-cy10000" *ngIf="layout === 'empty'"></empty-layout>
+
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- Layouts with horizontal navigation -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+
+<!-- Centered -->
+<centered-layout data-cy="layout-centered-cy10000" *ngIf="layout === 'centered'"></centered-layout>
+
+<!-- Enterprise -->
+<enterprise-layout data-cy="layout-enterprise-cy10000" *ngIf="layout === 'enterprise'"></enterprise-layout>
+
+<!-- Material -->
+<material-layout data-cy="layout-material-cy10000" *ngIf="layout === 'material'"></material-layout>
+
+<!-- Modern -->
+<modern-layout data-cy="layout-modern-cy10000" *ngIf="layout === 'modern'"></modern-layout>
+
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- Layouts with vertical navigation -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+
+<!-- Classic -->
+<classic-layout data-cy="layout-classic-cy10000" *ngIf="layout === 'classic'"></classic-layout>
+
+<!-- Classy -->
+<classy-layout data-cy="layout-classy-cy10000" *ngIf="layout === 'classy'"></classy-layout>
+
+<!-- Compact -->
+<compact-layout data-cy="layout-compact-cy10000" *ngIf="layout === 'compact'"></compact-layout>
+
+<!-- Dense -->
+<dense-layout data-cy="layout-dense-cy10000" *ngIf="layout === 'dense'"></dense-layout>
+
+<!-- Futuristic -->
+<futuristic-layout data-cy="layout-futuristic-cy10000" *ngIf="layout === 'futuristic'"></futuristic-layout>
+
+<!-- Thin -->
+<thin-layout data-cy="layout-thin-cy10000" *ngIf="layout === 'thin'"></thin-layout>
+
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- Settings drawer - Remove this to remove the drawer and its button -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<settings *ngIf="isAvailableSettings"></settings>

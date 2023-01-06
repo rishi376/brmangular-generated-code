@@ -1,0 +1,9 @@
+{
+  "testBedApp": {
+    "DocumentTypeEnum": {
+      "null": "",
+      "PASSPORT": "PASSPORT",
+      "EMP_LETTER": "EMP_LETTER"
+    }
+  }
+}

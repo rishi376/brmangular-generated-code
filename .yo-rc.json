@@ -1,0 +1,82 @@
+{
+  "generator-jhipster": {
+    "adminPortal": true,
+    "applicationIndex": 0,
+    "applicationType": "gateway",
+    "authenticationType": "jwt",
+    "baseName": "testBed",
+    "blueprints": [
+      {
+        "name": "generator-jhipster-brmangular",
+        "version": "0.0.1"
+      }
+    ],
+    "brmAngularClientLayout": ["empty", "enterprise"],
+    "brmAngularClientScheme": ["dark"],
+    "brmAngularClientTheme": ["default"],
+    "buildTool": "maven",
+    "cacheProvider": "no",
+    "clientFramework": "angularX",
+    "clientPackageManager": "npm",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "creationTimestamp": 1655947614897,
+    "csPortal": true,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "devServerPort": 4200,
+    "dtoSuffix": "DTO",
+    "enableBrmangularChatPanel": true,
+    "enableBrmangularMockApi": true,
+    "enableBrmangularSettingsPanel": true,
+    "enableGradleEnterprise": false,
+    "enableHibernateCache": false,
+    "enableSwaggerCodegen": false,
+    "enableTranslation": true,
+    "entities": [
+      "Application",
+      "Profile",
+      "ApplicationInstance",
+      "ProcessStatus",
+      "Correspondence",
+      "Document",
+      "Customer",
+      "PaymentInfo",
+      "Passport"
+    ],
+    "entitySuffix": "",
+    "gradleEnterpriseHost": "",
+    "jhiPrefix": "jhi",
+    "jhipsterVersion": "7.8.1",
+    "languages": ["en"],
+    "lastLiquibaseTimestamp": 1670309116000,
+    "messageBroker": false,
+    "monorepository": true,
+    "nativeLanguage": "en",
+    "otherModules": [
+      {
+        "name": "generator-jhipster-brmangular",
+        "version": "0.0.1"
+      }
+    ],
+    "packageFolder": "com/brmastr/build",
+    "packageName": "com.brmastr.build",
+    "pages": [],
+    "portalTypes": ["csPortal", "webPortal", "adminPortal"],
+    "prodDatabaseType": "postgresql",
+    "reactive": true,
+    "searchEngine": false,
+    "serverPort": "8080",
+    "serviceDiscoveryType": "eureka",
+    "skipCheckLengthOfIdentifier": false,
+    "skipClient": false,
+    "skipCommitHook": true,
+    "skipFakeData": false,
+    "skipServer": true,
+    "skipUserManagement": false,
+    "testFrameworks": ["cypress"],
+    "webPortal": true,
+    "websocket": false,
+    "withAdminUi": true
+  }
+}

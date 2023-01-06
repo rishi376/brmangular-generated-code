@@ -1,0 +1,55 @@
+name: Application_CI
+concurrency:
+  # Group PRs by head_ref, push to main branch by commit id, and others branch by ref.
+  group: ${{ github.workflow }}-${{ github.head_ref || (github.ref == 'refs/heads/main' && github.sha) || github.ref }}
+  cancel-in-progress: true
+on:
+  push:
+    branches-ignore:
+      - 'dependabot/**'
+  pull_request:
+    types: [closed, opened, synchronize, reopened]
+    branches:
+      - '*'
+permissions:
+  contents: read
+
+jobs:
+  app_ci_pipeline:
+    if: "!contains(github.event.head_commit.message, '[ci skip]') && !contains(github.event.head_commit.message, '[skip ci]') && !contains(github.event.pull_request.title, '[skip ci]') && !contains(github.event.pull_request.title, '[ci skip]')"
+    timeout-minutes: 20
+    name: ${{ matrix.os}}
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        os: [ubuntu-20.04, ubuntu-22.04, windows-latest, macos-latest]
+      fail-fast: false
+    steps:
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16.15.0
+      - name: 'SETUP: load npm cache'
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.npm
+            ~/.cache/Cypress/
+          key: ${{ runner.os }}-node-${{ steps.date.outputs.date }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ steps.date.outputs.date }}-
+            ${{ runner.os }}-node-${{ steps.date.outputs.date }}
+      - name: 'install required npm version'
+        ### - TODO - Need to find a better way to manage this node and the npm versions
+        run: npm install -g npm@6.14.17
+        shell: bash
+      - name: Install dependencies
+        run: npm ci
+      - name: Run unit tests
+        run: npm run ci:frontend:test
+      ## - TODO - Need to run the e2e in Prod mode
+      - name: Run e2e tests
+        run: npm run docker:dev:mock:e2e

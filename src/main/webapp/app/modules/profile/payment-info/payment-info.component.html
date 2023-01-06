@@ -1,0 +1,171 @@
+<div class="w-full max-w-3xl">
+  <div class="w-full max-w-3xl">
+    <div class="w-full max-w-3xl" *ngIf="newCustomer | async">Please fill all required field's to proceed</div>
+    <div class="w-full max-w-3xl">
+      <fuse-alert
+        data-cy="customer-alert"
+        class="mt-8 -mb-4"
+        *ngIf="showAlert$ | async"
+        [appearance]="'outline'"
+        [showIcon]="false"
+        [dismissible]="true"
+        [type]="alert.type"
+        [@shake]="alert.type === 'error'"
+      >
+        {{ alert.message }}
+      </fuse-alert>
+    </div>
+  </div>
+
+  <div class="m-2.5">
+    <button mat-mini-fab (click)="addNew()" data-cy="add-new-entity">
+      <mat-icon aria-label="Add">add</mat-icon>
+    </button>
+  </div>
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let paymentinfoForm of paymentinfoForms.controls; let index = index">
+      <mat-expansion-panel-header [attr.data-cy]="'accordian-data-' + index">
+        <mat-panel-title>
+          <div class="text-xl">paymentInfo</div>
+        </mat-panel-title>
+        <mat-panel-description>
+          <div class="absolute right-10">
+            <button mat-icon-button (click)="remove(i); $event.stopPropagation()" [attr.data-cy]="'remove-accordian-' + index">
+              <mat-icon aria-label="Delete">Delete</mat-icon>
+            </button>
+          </div>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <!-- Form -->
+      <form [formGroup]="paymentinfoForm">
+        <!-- Section -->
+        <div class="w-full">
+          <div class="text-xl">PaymentInfo Section</div>
+          <div class="text-secondary">Please provide the following information</div>
+        </div>
+        <div class="grid sm:grid-cols gap-6 w-full mt-8">
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div class="col-span-4 sm:col-span-2">
+              <mat-form-field class="fuse-mat-no-subscript w-full">
+                <mat-label>Payment Type</mat-label>
+                <mat-select formControlName="paymentType" name="paymentType" id="field_paymentType" [attr.data-cy]="'paymentType-' + index">
+                  <mat-option *ngFor="let pAYMENTTYPE of pAYMENTTYPEValues" [value]="pAYMENTTYPE"> {{ pAYMENTTYPE }} </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="fill" class="fuse-mat-no-subscript w-full">
+                <mat-label>Payment Type</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  class="fuse-mat-no-subscript w-full"
+                  name="paymentType"
+                  id="field_paymentType"
+                  [attr.data-cy]="'paymentType-' + index"
+                  formControlName="paymentType"
+                />
+              </mat-form-field>
+              <div
+                *ngIf="
+                  paymentinfoForm.get('paymentType')!.invalid &&
+                  (paymentinfoForm.get('paymentType')!.dirty || paymentinfoForm.get('paymentType')!.touched)
+                "
+              >
+                <small
+                  class="form-text text-danger"
+                  *ngIf="paymentinfoForm.get('paymentType')?.errors?.required"
+                  jhiTranslate="entity.validation.required"
+                >
+                  This field is required.
+                </small>
+              </div>
+            </div>
+          </div>
+          <div class="grid sm:grid-cols-6 gap-6">
+            <div class="col-span-4 sm:col-span-2">
+              <mat-form-field appearance="fill" class="fuse-mat-no-subscript w-full">
+                <mat-label>P Number</mat-label>
+                <input
+                  matInput
+                  type="number"
+                  class="fuse-mat-no-subscript w-full"
+                  name="pNumber"
+                  id="field_pNumber"
+                  [attr.data-cy]="'pNumber-' + index"
+                  formControlName="pNumber"
+                />
+              </mat-form-field>
+              <div
+                *ngIf="
+                  paymentinfoForm.get('pNumber')!.invalid &&
+                  (paymentinfoForm.get('pNumber')!.dirty || paymentinfoForm.get('pNumber')!.touched)
+                "
+              >
+                <small
+                  class="form-text text-danger"
+                  *ngIf="paymentinfoForm.get('pNumber')?.errors?.required"
+                  jhiTranslate="entity.validation.required"
+                >
+                  This field is required.
+                </small>
+                <small
+                  class="form-text text-danger"
+                  [hidden]="!paymentinfoForm.get('pNumber')?.errors?.number"
+                  jhiTranslate="entity.validation.number"
+                >
+                  This field should be a number.
+                </small>
+              </div>
+            </div>
+            <div class="col-span-4 sm:col-span-2">
+              <!-- TODO - test timed datatype - see ejs file -->
+              <mat-form-field appearance="fill" class="fuse-mat-no-subscript w-full">
+                <mat-label>Expiry</mat-label>
+                <input matInput [matDatepicker]="datepickerLocalDate" formControlName="expiry" [attr.data-cy]="'expiry-' + index" />
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="datepickerLocalDate"></mat-datepicker-toggle>
+                <mat-datepicker #datepickerLocalDate>
+                  <mat-datepicker-actions>
+                    <button mat-button matDatepickerCancel>Cancel</button>
+                    <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                  </mat-datepicker-actions>
+                </mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="col-span-4 sm:col-span-2">
+              <mat-form-field appearance="fill" class="fuse-mat-no-subscript w-full">
+                <mat-label>Security</mat-label>
+                <input
+                  matInput
+                  type="number"
+                  class="fuse-mat-no-subscript w-full"
+                  name="security"
+                  id="field_security"
+                  [attr.data-cy]="'security-' + index"
+                  formControlName="security"
+                />
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <!-- Divider -->
+        <div class="mt-11 mb-10 border-t"></div>
+
+        <!-- Actions -->
+        <div class="flex items-center justify-end">
+          <button mat-stroked-button type="button">Cancel</button>
+          <button
+            class="ml-4"
+            mat-flat-button
+            type="submit"
+            [disabled]="paymentinfoForm.invalid || isSaving"
+            [color]="'primary'"
+            [attr.data-cy]="'save-' + index"
+            (click)="save(index)"
+          >
+            Save
+          </button>
+        </div>
+      </form>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

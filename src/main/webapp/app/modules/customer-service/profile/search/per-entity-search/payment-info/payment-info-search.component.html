@@ -1,0 +1,15 @@
+<mat-form-field class="fuse-mat-no-subscript ml-2" style="width: 200px;">
+    <mat-label>Payment Type</mat-label>
+    <mat-select formControlName="paymentType">
+        <mat-option value="credit">Credit Card</mat-option>
+        <mat-option value="debit">Debit card</mat-option>
+        <mat-option value="netBanking">Net Banking</mat-option>
+    </mat-select>
+</mat-form-field>
+
+<mat-form-field class="fuse-mat-no-subscript ml-2" style="width: 200px;">
+    <mat-label>Payment date</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="paymentType">
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>

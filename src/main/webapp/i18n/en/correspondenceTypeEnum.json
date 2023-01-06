@@ -1,0 +1,9 @@
+{
+  "testBedApp": {
+    "CorrespondenceTypeEnum": {
+      "null": "",
+      "RECEIVED": "RECEIVED",
+      "FINALIZED_NOTICE": "FINALIZED_NOTICE"
+    }
+  }
+}

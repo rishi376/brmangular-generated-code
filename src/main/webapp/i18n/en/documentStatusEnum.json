@@ -1,0 +1,9 @@
+{
+  "testBedApp": {
+    "DocumentStatusEnum": {
+      "null": "",
+      "UPLOADED": "UPLOADED",
+      "ACCEPTED": "ACCEPTED"
+    }
+  }
+}
